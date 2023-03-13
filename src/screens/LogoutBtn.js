@@ -43,7 +43,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 15,
     backgroundColor: 'red',
-    marginVertical: 4
+    marginVertical: 4,
+    marginTop:600,
+    width:'95%'
   },
   label: {
     color: '#FFF',

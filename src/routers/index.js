@@ -8,6 +8,7 @@ import BottomTab from '../navigations/BottomTab';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import DemoCalculator from '../screens/DemoCalculator';
+import FirstScreen from '../screens/FirstScreen';
 
 const Stack = createStackNavigator();
 
@@ -18,7 +19,8 @@ export default function () {
             <Stack.Screen name="Login" component={LoginScreen}/>
             <Stack.Screen name="Regis" component={RegisterScreen}/>
             <Stack.Screen name="Tab" component={BottomTab} />
-            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Home" component={FirstScreen} />
+            {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
             <Stack.Screen name="User" component={UserScreen} />
             <Stack.Screen name="Cal" component={DemoCalculator}/>
             <Stack.Screen name="Graph" component={GraphScreen} />

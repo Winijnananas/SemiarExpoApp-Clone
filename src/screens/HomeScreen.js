@@ -1,18 +1,20 @@
 
 import { useNavigation } from '@react-navigation/core'
-import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView, SafeAreaView, Image, Alert } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView, SafeAreaView, Image, Alert,Dimensions,Button,FlatList } from 'react-native'
 import React, { useEffect, useState,useRef } from 'react'
 import styles from '../../css/styles';
-import { collection, doc, getDoc, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, setDoc ,onSnapshot} from "firebase/firestore";
 import { db } from '../components/config';
-
+import { LineChart } from 'react-native-chart-kit';
 import {Picker} from '@react-native-picker/picker';
+
+
 const HomeScreen = ({ navigation }) => {
   const [investment, setUsername] = React.useState('');
   const [price, setPassword] = React.useState('');
   const [selectedtype, setSelectedtype] = useState();
-
-
+  const [dataPoints, setDataPoints] = useState([]);
+  const [data, setData] = useState([]);
   const pickerRef = useRef();
 
 function open() {
@@ -22,13 +24,23 @@ function open() {
 function close() {
   pickerRef.current.blur();
 }
-  const items = [
-    { label: 'Item 1', value: 'item1' },
-    { label: 'Item 2', value: 'item2' },
-    { label: 'Item 3', value: 'item3' },
-  ];
-  
-
+  // useEffect(() => {
+  //   const unsubscribe = onSnapshot(collection(db, 'users', 'Random'), (snapshot) => {
+  //     const data = [];
+  //     snapshot.forEach((doc) => {
+  //       data.push({ id: doc.id, ...doc.data() });
+  //     });
+  //     setData(data);
+  //   });
+  //   return () => unsubscribe();
+  // }, []);
+  // const renderItem = ({ item }) => (
+  //   <View style={{ padding: 10 }}>
+  //     <Text>Investment: {item.investment}</Text>
+  //     <Text>Price: {item.price}</Text>
+  //     <Text>Type: {item.type}</Text>
+  //   </View>
+  // );
 
   // function create() {
   //   // Check if the collection already exists
@@ -76,18 +88,39 @@ function close() {
   //   });
   // } 
 
+  // function create(){
+  //   if (investment && price && selectedtype) {
+  //     setDoc(doc(db, "users", "New Collection"), {
+  //       investment: investment,
+  //       price: price,
+  //       type:selectedtype,
+  //     }).then(()=>{
+        
+  //       //data save success
+  //       Alert.alert('บันทึกข้อมูลลงในฐานข้อมูลเเล้ว')
+  //       console.log('data submitted');
+  //       // setDataPoints([...dataPoints, { price }]);
+  //     }).catch(()=>{
+  //       console.log(error);
+  //     });
+  //   } else {
+  //     Alert.alert('เตือน','กรอกข้อมูลไม่ครบถ้วน')
+  //     console.log('Investment or price is null');
+  //   }
+  // }
   function create(){
     if (investment && price && selectedtype) {
-      setDoc(doc(db, "users", "New Collection"), {
+      setDoc(collection(db, "users", "Random").doc(), {
         investment: investment,
         price: price,
-        type:selectedtype,
-      }).then(()=>{
-        
+        type: selectedtype,
+      })
+      .then(() => {
         //data save success
         Alert.alert('บันทึกข้อมูลลงในฐานข้อมูลเเล้ว')
         console.log('data submitted');
-      }).catch(()=>{
+      })
+      .catch((error) => {
         console.log(error);
       });
     } else {
@@ -95,9 +128,8 @@ function close() {
       console.log('Investment or price is null');
     }
   }
-
   return (
-    <ScrollView
+    <View
       style={styles.container}
       behavior="padding"
     >
@@ -141,10 +173,11 @@ function close() {
   onValueChange={(itemValue, itemIndex) =>
     setSelectedtype(itemValue)
   }>
-  <Picker.Item label="เกษตรกรรม" value="เกษตรกรรม" />
-  <Picker.Item label="ประมง" value="ประมง" />
-  <Picker.Item label="ขายของ" value="ขายของ" />
-  <Picker.Item label="ฝากเงิน" value="ฝากเงิน" />
+  <Picker.Item label="การเกษตรกรรม" value="เกษตรกรรม" />
+  <Picker.Item label="การประมง" value="ประมง" />
+  <Picker.Item label="ขายออก" value="ขายออก" />
+  <Picker.Item label="ได้รับเงิน" value="ได้รับเงิน" />
+  <Picker.Item label="จ่ายเงิน" value="จ่ายเงิน" />
   <Picker.Item label="ถอนเงิน" value="ถอนเงิน" />
 </Picker>
             
@@ -159,10 +192,48 @@ function close() {
             <Text style={styles.buttonLabel}
             >บันทึกข้อมูล</Text>
           </TouchableOpacity>
-
+          {/* <View style={{ flex: 1, padding: 20 }}>
+      <TextInput style={{ padding: 10, borderColor: 'gray', borderWidth: 1, marginBottom: 10 }} placeholder="Investment" />
+      <TextInput style={{ padding: 10, borderColor: 'gray', borderWidth: 1, marginBottom: 10 }} placeholder="Price" />
+      <Button title="Create" onPress={create} />
+      <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.id} />
+    </View> */}
+          
+          {/* <LineChart
+  data={{
+    labels: dataPoints.map((dataPoint, index) => index.toString()),
+    datasets: [{
+      data: dataPoints.map(dataPoint => dataPoint.price)
+    }]
+  }}
+  width={Dimensions.get('window').width}
+  height={220}
+  yAxisSuffix=" บาท"
+  chartConfig={{
+    backgroundColor: "#e26a00",
+    backgroundGradientFrom: "#fb8c00",
+    backgroundGradientTo: "#ffa726",
+    decimalPlaces: 0,
+    color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+    labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+    style: {
+      borderRadius: 16
+    },
+    propsForDots: {
+      r: "6",
+      strokeWidth: "2",
+      stroke: "#ffa726"
+    }
+  }}
+  bezier
+  style={{
+    marginVertical: 8,
+    borderRadius: 16
+  }}
+/> */}
         </View>
       </View>
-    </ScrollView>
+    </View>
   )
 }
 

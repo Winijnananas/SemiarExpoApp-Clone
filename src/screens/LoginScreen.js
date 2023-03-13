@@ -39,23 +39,6 @@ const LoginScreen = ({ navigation }) => {
       </View>
     );
   }
-  
-
-  // const handleSigIn =()=>{
-  //   signInWithEmailAndPassword(auth, username, password)
-  // .then((userCredential) => {
-  //   navigation.replace('Tab')
-  //   console.log('เข้าสู่ระบบ')
-  //   const user = userCredential.user;
-  //   console.log(user)
-  // })
-  // .catch((error) => {
-  //   const errorCode = error.code;
-  //   const errorMessage = error.message;
-  //   Alert.alert('กรุณากรอกอีเมลล์เเละรหัสผ่าน')
-  //   console.log(error)
-  // });   
-  // }
 
   
   const handleSigIn =()=>{
@@ -74,15 +57,26 @@ const LoginScreen = ({ navigation }) => {
         navigation.replace('Tab');
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        Alert.alert('กรุณากรอกอีเมลล์เเละรหัสผ่าน');
-        console.log(error);
+        if (error.code === 'auth/wrong-password') {
+          console.log('Wrong Password');
+          alert('รหัสผ่านไม่ถูกต้อง');
+        } else if (error.code === 'auth/invalid-email') {
+          console.log('Invalid Email');
+          alert('ไม่พบอีเมลล์ดังกล่าว');
+        }
       })
       .finally(() => {
         setLoading(false);
       });   
   };
+
+  function SignInValidation() {
+    if (username == "" || password == "") {
+        Alert.alert("เตือน","กรุณากรอกอีเมลล์หรือะรหัสผ่านให้ครบถ้วน");
+    } else {
+       handleSigIn();
+    }
+}
 
 
   // const handleSigIn =()=>{
@@ -148,7 +142,7 @@ const LoginScreen = ({ navigation }) => {
 
           <TouchableOpacity
             style={styles.loginButton}
-            onPress={handleSigIn}
+            onPress={SignInValidation}
             // onPress={() => navigation.navigate('Tab')}
           // onPress={Login}
           >

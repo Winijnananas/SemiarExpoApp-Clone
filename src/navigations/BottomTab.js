@@ -4,7 +4,7 @@ import UserScreen from "../screens/UserScreen";
 import HomeScreen from "../screens/HomeScreen";
 import GraphScreen from "../screens/GraphScreen";
 import DemoCalculator from "../screens/DemoCalculator";
-
+import FirstScreen from "../screens/FirstScreen";
 
 
 const Tab = createBottomTabNavigator();
@@ -13,12 +13,26 @@ const Tab = createBottomTabNavigator();
 
 export default function TabNavigation() {
     return (
+        // <Tab.Navigator
+        //     screenOptions={{ headerShown: false, tabBarActiveTintColor: '#FFFF', tabBarInactiveTintColor: '#8C1E14', tabBarStyle: { backgroundColor: '#F25C05', borderBottomColor: 'black' } }}>
+        //     <Tab.Screen
+                
+        //         name="หน้าหลัก"
+        //         component={HomeScreen}
+        //         options={{
+        //             tabBarShowLabel: true,
+        //             tabBarIcon: ({ color, size }) => (
+        //                 //<MaterialCommunityIcons name="home" color={color} size={size} />
+        //                 <MaterialCommunityIcons name="home-variant" color={color} size={size} />
+        //             ),
+        //         }}
+        //     />
         <Tab.Navigator
             screenOptions={{ headerShown: false, tabBarActiveTintColor: '#FFFF', tabBarInactiveTintColor: '#8C1E14', tabBarStyle: { backgroundColor: '#F25C05', borderBottomColor: 'black' } }}>
             <Tab.Screen
                 
                 name="หน้าหลัก"
-                component={HomeScreen}
+                component={FirstScreen}
                 options={{
                     tabBarShowLabel: true,
                     tabBarIcon: ({ color, size }) => (

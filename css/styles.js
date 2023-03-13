@@ -18,6 +18,15 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     color: "#D93D04",
   },
+  titlefirst: {
+    textAlign:'center',
+    justifyContent: 'center',
+    fontSize: 35,
+    marginTop: 50,
+    marginBottom: 10,
+    fontWeight: "800",
+    color: "#D93D04",
+  },
   titleregis: {
     textAlign:'center',
     justifyContent: 'center',
@@ -137,6 +146,30 @@ const styles = StyleSheet.create({
         alignContent:'center',
         width:'100%'
       },
+      containerfirst:{
+        borderRadius:20,
+        backgroundColor:'#899499',
+        padding:10,
+        margin:5,
+        marginHorizontal:0,
+        color:'#fff',
+        fontSize:18,
+        fontWeight:'bold'
+    },
+    containerfirstsub:{
+      borderRadius:20,
+      backgroundColor:'#899499',
+      padding:10,
+      margin:5,
+      marginHorizontal:0,
+      color:'#fff',
+      fontSize:18,
+      fontWeight:'bold'
+  },
+    innerContainer:{
+        alignItems:'center',
+        flexDirection:'column',
+    }
 });
 
 module.exports = styles;
