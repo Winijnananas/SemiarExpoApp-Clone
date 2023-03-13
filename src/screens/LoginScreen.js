@@ -117,7 +117,7 @@ const LoginScreen = ({ navigation }) => {
 
       <View style={{ display: 'flex', justifyContent: 'flex-start', height: '100%' }}>
 
-        <Text style={styles.title}>ล็อคอินเข้าสู่ระบบ</Text>
+        <Text style={styles.title}>ลงทะเบียนเข้าสู่ระบบ</Text>
 
         <View>
 
