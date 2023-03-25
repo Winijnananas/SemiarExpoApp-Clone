@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     color: "#D93D04",
   },
   titlefirst: {
+    paddingTop:120,
     textAlign:'center',
     justifyContent: 'center',
     fontSize: 35,
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
         width: "100%",
         borderWidth: 1,
         borderColor: "#3D3D3D",
-        borderRadius: 0,
+        borderRadius: 7,
         backgroundColor: "#FFFF",
         padding: 10,
         color: "#A9A9A9",
@@ -139,15 +140,15 @@ const styles = StyleSheet.create({
       },
       loginButtonHome: {
         borderWidth: 0,
-        borderRadius: 0,
+        borderRadius: 7,
         padding: 10,
-        backgroundColor: "#F25C05",
+        backgroundColor: "#1C6AE4",
         justifyContent:'center',
         alignContent:'center',
         width:'100%'
       },
       containerfirst:{
-        borderRadius:20,
+        borderRadius:10,
         backgroundColor:'#899499',
         padding:10,
         margin:5,
@@ -157,13 +158,13 @@ const styles = StyleSheet.create({
         fontWeight:'bold'
     },
     containerfirstsub:{
-      borderRadius:20,
-      backgroundColor:'#899499',
+      borderRadius:0,
+      backgroundColor:'#849999',
       padding:10,
       margin:5,
       marginHorizontal:0,
       color:'#fff',
-      fontSize:18,
+      fontSize:25,
       fontWeight:'bold'
   },
     innerContainer:{

@@ -5,6 +5,7 @@ import HomeScreen from "../screens/HomeScreen";
 import GraphScreen from "../screens/GraphScreen";
 import DemoCalculator from "../screens/DemoCalculator";
 import FirstScreen from "../screens/FirstScreen";
+import RoundScreen from "../screens/RoundScreen";
 
 
 const Tab = createBottomTabNavigator();
@@ -13,6 +14,7 @@ const Tab = createBottomTabNavigator();
 
 export default function TabNavigation() {
     return (
+
         // <Tab.Navigator
         //     screenOptions={{ headerShown: false, tabBarActiveTintColor: '#FFFF', tabBarInactiveTintColor: '#8C1E14', tabBarStyle: { backgroundColor: '#F25C05', borderBottomColor: 'black' } }}>
         //     <Tab.Screen
@@ -23,16 +25,30 @@ export default function TabNavigation() {
         //             tabBarShowLabel: true,
         //             tabBarIcon: ({ color, size }) => (
         //                 //<MaterialCommunityIcons name="home" color={color} size={size} />
-        //                 <MaterialCommunityIcons name="home-variant" color={color} size={size} />
+        //                 <MaterialCommunityIcons name="home" color={color} size={size} />
         //             ),
         //         }}
         //     />
-        <Tab.Navigator
-            screenOptions={{ headerShown: false, tabBarActiveTintColor: '#FFFF', tabBarInactiveTintColor: '#8C1E14', tabBarStyle: { backgroundColor: '#F25C05', borderBottomColor: 'black' } }}>
+        //  <Tab.Navigator
+        //     screenOptions={{ headerShown: false, tabBarActiveTintColor: '#FFFF', tabBarInactiveTintColor: '#8C1E14', tabBarStyle: { backgroundColor: '#F25C05', borderBottomColor: 'black',padding:10 } }}>
+        //     <Tab.Screen
+                
+        //         name="หน้าหลัก"
+        //         component={FirstScreen}
+        //         options={{
+        //             tabBarShowLabel: true,
+        //             tabBarIcon: ({ color, size }) => (
+        //                 //<MaterialCommunityIcons name="home" color={color} size={size} />
+        //                 <MaterialCommunityIcons name="home-variant" color={color} size={size} />
+        //             ),
+        //         }}
+        //     /> 
+            <Tab.Navigator
+            screenOptions={{ headerShown: false, tabBarActiveTintColor: '#FFFF', tabBarInactiveTintColor: '#8C1E14', tabBarStyle: { backgroundColor: '#F25C05', borderBottomColor: 'black',padding:10 } }}>
             <Tab.Screen
                 
                 name="หน้าหลัก"
-                component={FirstScreen}
+                component={RoundScreen}
                 options={{
                     tabBarShowLabel: true,
                     tabBarIcon: ({ color, size }) => (
@@ -40,7 +56,7 @@ export default function TabNavigation() {
                         <MaterialCommunityIcons name="home-variant" color={color} size={size} />
                     ),
                 }}
-            />
+            /> 
             <Tab.Screen
                 name='เเนวโน้ม'
                 component={GraphScreen}

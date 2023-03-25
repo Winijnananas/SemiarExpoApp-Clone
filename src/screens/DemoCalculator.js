@@ -12,7 +12,8 @@ const DemoCalculator = () => {
     const [payment, setPayment] = useState('')
 
     const CalculatorCost = () => {
-        const cost = expenses - payment
+        // const cost = (expenses - payment)/payment*100
+        const cost =((expenses - payment)/payment)*100
         setCost(cost.toFixed(0))
     }
     return (
@@ -51,7 +52,7 @@ const DemoCalculator = () => {
                     <View>
                     <Text style={{ color: 'black', fontWeight: '700', fontSize: 15, textAlign: 'left', marginLeft: 5 }}>กำไรขั้นต้น</Text>
                         <Text style={{fontSize:30,fontWeight:'bold'}}>{cost}</Text>
-                        <Text style={{ color: '#13678A', fontWeight: '700', fontSize: 15, textAlign: 'left', marginLeft: 5 }}>บาท</Text>
+                        <Text style={{ color: '#13678A', fontWeight: '700', fontSize: 15, textAlign: 'left', marginLeft: 5 }}>%</Text>
                     </View>
                 </View>
             </SafeAreaView>
