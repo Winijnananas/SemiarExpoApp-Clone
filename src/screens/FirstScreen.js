@@ -49,7 +49,7 @@ const FirstScreen = ({ navigation }) => {
 
 
     function create() {
-        if (investment && price && selectedtype) {
+        if (roundNumber && investment && price && selectedtype) {
             const otherCollectionRef = collection(db, "users");
             addDoc(otherCollectionRef, {
                 roundNumber: roundNumber,
@@ -238,8 +238,7 @@ const FirstScreen = ({ navigation }) => {
                             onPress={() => {
                                 CalculatorCost();
                                 create();
-                                setUsername('');
-                                setPassword('');
+                              
                                 setSelectedtype('');
                             }}
 

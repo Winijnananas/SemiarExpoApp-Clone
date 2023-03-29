@@ -8,6 +8,7 @@ import { Picker } from '@react-native-picker/picker';
 import { Swipeable } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import EditScreen from './EditScreen';
+import { RIGHT } from 'react-swipeable';
 
 export default function InsideScreen({ navigation }) {
   const [investment, setUsername] = React.useState('');
@@ -52,20 +53,21 @@ export default function InsideScreen({ navigation }) {
   const RightSwipe = ({ item }) => {
 
     return (
-      <View style={{ height: 100, flexDirection: 'column' }}>
-        <TouchableOpacity style={{
-          height: 35, backgroundColor: '#38AEE6', justifyContent: 'center', alignItems: 'center', borderRadius: 0, padding: 0,
-          marginBottom: 5,width:'100%'
-        }}
+      <View style={{ height: 100, flexDirection: 'row',width:'20%',justifyContent:'center',alignContent:'center',alignSelf:'center' }}>
+          <TouchableOpacity style={{
+            height: 35, backgroundColor: '#DEB026', justifyContent: 'center', alignItems: 'center', borderRadius: 0, padding: 0,marginRight:5,
+            marginBottom: 5,width:'100%'
+          }}
 
-        >
-          <Text
-            style={{ color: '#ffff', fontWeight: '800' }}
-            onPress={EditScreen}
-          >เเก้ไข</Text>
+          >
+            <Text
+              style={{ color: '#ffff', fontWeight: '800' }}
+              onPress={EditScreen}
+            >เเก้ไข</Text>
 
-        </TouchableOpacity>
+          </TouchableOpacity>
         <TouchableOpacity style={{
+          width:'30%',
            height: 35, backgroundColor: '#FF0000', justifyContent: 'center', alignItems: 'center', borderRadius: 0, padding: 0,
           margin: 0,width:'100%'
         }}
@@ -95,18 +97,21 @@ export default function InsideScreen({ navigation }) {
         color: "#36454F",
       }}>ประวัติการลงทุน</Text>
 
-     
+
         <FlatList
+        
           data={data}
           renderItem={({ item, index }) => (
             <View>
               <Text style={styles.containerfirstsub}>
-                รอบที่ {item.roundNumber} - {item.investment} ประเภท - {item.type} - {item.price} THB
+                รอบที่ {item.roundNumber} | {item.investment} ประเภท | {item.type} - {item.price} บาท
+                {console.log(item.id)}
               </Text>
               <RightSwipe item={item}/>
             </View>
           )}
         />
+      
   
   {/* <FlatList
           data={data}
@@ -120,8 +125,11 @@ export default function InsideScreen({ navigation }) {
           )}
         /> */}
   
-
+<View style={{justifyContent:'center',alignContent:'center',alignSelf:'center',width:'95%',}}>
       <Text style={{
+      
+        height:40,
+        borderRadius:5,
         textAlign: 'center',
         justifyContent: 'center',
         alignItems: 'center',
@@ -131,10 +139,11 @@ export default function InsideScreen({ navigation }) {
         marginTop: 10,
         paddingBottom: 5,
         color: "#ffff",
-        backgroundColor: 'orange'
+        backgroundColor: '#E64A19'
       }}
         onPress={() => navigation.navigate('Tab')}
-      >Go back to main page</Text>
+      >กลับหน้าเดิม</Text>
+      </View>
     </View>
   );
 };

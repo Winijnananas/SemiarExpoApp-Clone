@@ -159,13 +159,15 @@ const styles = StyleSheet.create({
     },
     containerfirstsub:{
       borderRadius:0,
-      backgroundColor:'#849999',
+      backgroundColor:'#000000',
       padding:10,
       margin:5,
       marginHorizontal:0,
       color:'#fff',
-      fontSize:25,
-      fontWeight:'bold'
+      fontSize:15,
+      fontWeight:'bold',
+      width:"100%",
+      
   },
     innerContainer:{
         alignItems:'center',

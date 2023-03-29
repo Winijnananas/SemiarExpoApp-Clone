@@ -9,11 +9,13 @@ export default function UserScreen({navigation}) {
   const auth = getAuth();
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
+  const [fname, setName] = useState('');
   useEffect(() => {
     const user = auth.currentUser;
     if (user) {
       setDisplayName(user.displayName);
       setEmail(user.email);
+      setName(user.fname);
     }
   }, [auth.currentUser]);
 
@@ -21,7 +23,7 @@ export default function UserScreen({navigation}) {
     return (
       <ScrollView>
       <SafeAreaView style={{flex:1,alignContent:"center",alignItems:'center',justifyContent: 'center',}}>
-        <Text style={{color:'black',fontWeight:'bold',fontSize:25,marginTop:150}}>Hello User : {email}</Text>
+        <Text style={{color:'black',fontWeight:'bold',fontSize:25,marginTop:150}}>Hello User :{email}{fname}</Text>
         {/* <Text style={{fontWeight:'bold',fontSize:40}}>User Screen</Text> */}
       
         <Text style={{fontSize:20}}>This app duration development.</Text>
@@ -36,7 +38,7 @@ export default function UserScreen({navigation}) {
                         marginTop:10,
                         paddingBottom:5,
                         color: "#ffff",
-                        backgroundColor:'#007ACC',
+                        backgroundColor:'#000000',
                         width:'80%'
                     }}
                     onPress={()=>

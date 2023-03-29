@@ -4,59 +4,18 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { collection, doc, getDoc, setDoc, onSnapshot, addDoc,roundRef } from "firebase/firestore";
 import { db } from '../components/config';
 import React, { useEffect, useState, useRef } from 'react'
-
+import Logo from '../../css/logo';
 export default function RoundScreen(props) {
     const navigation = useNavigation();
     const { title = 'สร้างรอบ' } = props;
     const [cost,setCost] = useState('');
     const [data, setData] = useState([]);
-    useEffect(() => {
-      try {
-        const usersCollectionRef = collection(db, "users");
-          const query = query(
-            collection(usersCollectionRef, "cost", "round", "transactions"),
-            orderBy("investment")
-          );
-          
-          onSnapshot(query, (querySnapshot) => {
-              const dataArray = [];
-              querySnapshot.forEach((doc, index) => { // add index as the second parameter
-                  dataArray.push({ id: doc.id, ...doc.data(), index }); // add index to the object
-              });
-              setData(dataArray);
-          });
-          return () => unsubscribe();
-      }
-      catch (error) {
-          console.log(error);
-      }
-
-
-  }, []);
    
-  function createcost() {
-    if (cost) {
-        const otherCollectionRef = collection(db, "users");
-        addDoc(otherCollectionRef, {
-            cost:cost
-        })
-            .then((docRef) => {
-                Alert.alert("บันทึกข้อมูลลงในฐานข้อมูลเเล้ว");
-                console.log('บันทึกลงประวัติเเล้ว')
-                console.log("data submitted with ID: ", docRef.id);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    } else {
-        Alert.alert("เตือน", "กรอกข้อมูลไม่ครบถ้วน");
-        console.log("Investment or price is null");
-    }
-}
 
   return (
     <View style={{justifyContent:'center',alignContent:'center',alignItems:'center',marginTop:100,flex:1}}>
-      <Text>RoundScreen</Text>
+      <Text style={{fontSize:25,fontWeight:'bold',color:'#B24B0F'}}>ยินดีต้อนรับ ♥</Text>
+      <Logo/>
       {/* <Text>จำนวนเงินลงทุน:</Text>
                         <TextInput
                         style={{marginBottom:5,
