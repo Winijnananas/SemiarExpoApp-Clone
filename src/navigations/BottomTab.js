@@ -70,7 +70,7 @@ export default function TabNavigation() {
                     ),
                 }}
             />
-            <Tab.Screen
+            {/* <Tab.Screen
                 name='คำนวณผล'
                 component={DemoCalculator}
                 options={{
@@ -82,7 +82,7 @@ export default function TabNavigation() {
                         
                     ),
                 }}
-            />
+            /> */}
             <Tab.Screen
                 name='ผู้ใช้'
                 component={UserScreen}

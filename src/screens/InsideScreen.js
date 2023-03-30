@@ -55,15 +55,15 @@ export default function InsideScreen({ navigation }) {
     return (
       <View style={{ height: 100, flexDirection: 'row',width:'20%',justifyContent:'center',alignContent:'center',alignSelf:'center' }}>
           <TouchableOpacity style={{
-            height: 35, backgroundColor: '#DEB026', justifyContent: 'center', alignItems: 'center', borderRadius: 0, padding: 0,marginRight:5,
+            height: 35, backgroundColor: '#0288D1', justifyContent: 'center', alignItems: 'center', borderRadius: 0, padding: 0,marginRight:5,
             marginBottom: 5,width:'100%'
           }}
 
           >
             <Text
-              style={{ color: '#ffff', fontWeight: '800' }}
+              style={{ color: '#ffff', fontWeight: '800',fontSize:15 }}
               onPress={EditScreen}
-            >เเก้ไข</Text>
+            >รายละเอียด</Text>
 
           </TouchableOpacity>
         <TouchableOpacity style={{
@@ -104,8 +104,8 @@ export default function InsideScreen({ navigation }) {
           renderItem={({ item, index }) => (
             <View>
               <Text style={styles.containerfirstsub}>
-                รอบที่ {item.roundNumber} | {item.investment} ประเภท | {item.type} - {item.price} บาท
-                {console.log(item.id)}
+                รอบที่ {item.roundNumber} | {item.investment}  | สถานะ : {item.status.toUpperCase()}
+                {/* {console.log(item.id)} */}
               </Text>
               <RightSwipe item={item}/>
             </View>

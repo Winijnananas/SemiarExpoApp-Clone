@@ -1,9 +1,9 @@
-import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView, SafeAreaView, Image, Alert ,ActivityIndicator} from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView, SafeAreaView, Image, Alert, ActivityIndicator } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from '../../css/styles';
 import { auth } from '../components/config';
 
-import {AsyncStorage} from 'react-native';
+import { AsyncStorage } from 'react-native';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -33,15 +33,15 @@ const LoginScreen = ({ navigation }) => {
 
   if (loading) {
     return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator size="large" color="orange" />
         <Text style={{ marginTop: 16, fontSize: 30 }}>กำลังโหลดข้อมูล...</Text>
       </View>
     );
   }
 
-  
-  const handleSigIn =()=>{
+
+  const handleSigIn = () => {
     setLoading(true);
     signInWithEmailAndPassword(auth, username, password)
       .then(async (userCredential) => {
@@ -50,7 +50,7 @@ const LoginScreen = ({ navigation }) => {
         await AsyncStorage.setItem('userToken', userToken);
         console.log('User Token')
         console.log(userToken)
-  
+
         console.log('User Keyapi')
         console.log(user)
         console.log('Login Success')
@@ -67,16 +67,16 @@ const LoginScreen = ({ navigation }) => {
       })
       .finally(() => {
         setLoading(false);
-      });   
+      });
   };
 
   function SignInValidation() {
     if (username == "" || password == "") {
-        Alert.alert("เตือน","กรุณากรอกอีเมลล์หรือะรหัสผ่านให้ครบถ้วน");
+      Alert.alert("เตือน", "กรุณากรอกอีเมลล์หรือะรหัสผ่านให้ครบถ้วน");
     } else {
-       handleSigIn();
+      handleSigIn();
     }
-}
+  }
 
 
   // const handleSigIn =()=>{
@@ -102,7 +102,7 @@ const LoginScreen = ({ navigation }) => {
   // };
 
 
- 
+
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -143,7 +143,7 @@ const LoginScreen = ({ navigation }) => {
           <TouchableOpacity
             style={styles.loginButton}
             onPress={SignInValidation}
-            // onPress={() => navigation.navigate('Tab')}
+          // onPress={() => navigation.navigate('Tab')}
           // onPress={Login}
           >
             <Text style={styles.buttonLabel}
